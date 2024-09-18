@@ -22,7 +22,28 @@ public class Main {
         directorio = teclado.nextLine();
 
         System.out.println("Introduce de que actividad quieres ver el resultado. Van del 1 al 8");
+        System.out.println("1 - Realitza un programa que reba com a paràmetre d’entrada un directori i el " +
+                "mostre per pantalla.");
+        System.out.println("2 - Ampliar el programa anterior per tal que mostre totes les característiques " +
+                "d’interés del directori, prenent com a referència la informació que proporciona la classe File.");
+        System.out.println("3 - Introduir una comprobació en el programa anterior per determinar si el " +
+                "directori existeix.");
+        System.out.println("4 - Realitzar un programa que donat un directori, comprove si existeix i torne un " +
+                "missatge de confirmació si existeix o una alerta en cas contrari");
+        System.out.println("5 - Realitza un programa que reba com a paràmetres d’entrada un directori i una extensió " +
+                "de fitxer (por exemple .txt) i torne per pantalla tots els fitxers del directori que " +
+                "complisquen el criteri.");
+        System.out.println("6 - Modifica el programa anterior per que tinga en compte que si no se li passa " +
+                "ninguna extensió com a paràmetre, mostre tot el contingut del directori.");
+        System.out.println("7 - Modifica el programa anterior per tal que admeta com a paràmetres d’entrada un " +
+                "nombre qualsevol d’extensions, tornant després per pantalla tots els fitxers del directori que " +
+                "tinguen alguna de les extensions indicades");
+        System.out.println("8 - Desenvolupa un programa que donat un fitxer, realitze una còpia del mateix " +
+                "(en el mateix directori i canviant-li el nom) i el borre després. Mostra una traça per pantalla" +
+                " de les accions per a veure que es realitzen.");
+
         menu = teclado.nextInt();
+
         File dir = new File(directorio);
         Main main = new Main();
 
@@ -94,20 +115,20 @@ public class Main {
     }
 
     public void act1(File directorio) {
-        System.out.println(directorio);
+        System.out.println("El directorio introducido es: "+directorio);
     }
 
     public void act2 (File directorio) {
-        System.out.println(directorio);
-        System.out.println(directorio.getName());
-        System.out.println(directorio.getPath());
-        System.out.println(directorio.getAbsolutePath());
-        System.out.println(directorio.canExecute());
-        System.out.println(directorio.canRead());
-        System.out.println(directorio.canWrite());
-        System.out.println(directorio.exists());
-        System.out.println(directorio.isFile());
-        System.out.println(directorio.isDirectory());
+        System.out.println("Ruta introducida por el usuario--> " + directorio);
+        System.out.println("Nombre de la carpeta [.getName] --> "+directorio.getName());
+        System.out.println("Ruta relativa [.getPath()] --> "+directorio.getPath());
+        System.out.println("Ruta absoluta [.getAbsolutePath()] --> "+directorio.getAbsolutePath());
+        System.out.println("Se puede ejecutar? [.canExecute] --> "+directorio.canExecute());
+        System.out.println("Se puede leer? [.canRead] --> "+directorio.canRead());
+        System.out.println("Se puede escrbir? [.canWrite] --> "+directorio.canWrite());
+        System.out.println("El archivo/carpeta existe? [.exists] --> "+directorio.exists());
+        System.out.println("El archivo/carpeta es un archivo? [.isFile] --> "+directorio.isFile());
+        System.out.println("El archivo/carpeta es una carpeta? [.isFile] --> "+directorio.isDirectory());
 
     }
 
@@ -132,6 +153,7 @@ public class Main {
         if (directorio.isDirectory()) {
             File[] archivos = directorio.listFiles((dir, name) -> name.endsWith(extension));
             if (archivos != null && archivos.length > 0) {
+                System.out.println("Los archvos con la extension (" + extension + ") son:");
                 for (File archivo : archivos) {
                     System.out.println(archivo.getName());
                 }
